@@ -11,7 +11,7 @@ public class LoginPageTest {
     }
 
     @Test
-    public void login() throws InterruptedException {
+    public void checkLoginTest() throws InterruptedException {
         LoginPage loginPage = open(LoginPage.URL_PRIVATE_OFFICE_PAGE, LoginPage.class)
         .setPass("123456")
         .setEmail("Beckham")
