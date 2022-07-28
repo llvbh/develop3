@@ -1,5 +1,4 @@
 package com.yandex.praktikum;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -10,9 +9,15 @@ public class MainPage {
     public static final String URL_MAIN_PAGE = "https://stellarburgers.nomoreparties.site/";
 
     //верхняя кнопка Личный Кабинет
-    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__linkText__3q_va ml-2")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Личный Кабинет']")
     public SelenideElement btnOpenLoginPage;
-//
+
+    //нажать на кнопку Личный Кабинет
+    public LoginPage clickBtnPersonalCabinet() {
+        btnOpenLoginPage.click();
+        return page(LoginPage.class);
+    }
+
 //    //кнопка куки
 //    @FindBy(how = How.CLASS_NAME, using = "App_CookieButton__3cvqF")
 //    private SelenideElement btnGetCookie;
@@ -147,13 +152,7 @@ public class MainPage {
 //    @FindBy(how=How.CLASS_NAME, using = "accordion__panel")
 //    private ElementsCollection answer;
 //
-    //нажать на кнопку Личный Кабинет
-    public LoginPage clickBtnCookie() {
-        if (btnOpenLoginPage.exists()) {
-            btnOpenLoginPage.click();
-        }
-        return page(LoginPage.class);
-    }
+
 //
 //    //scroll до вопросов
 //    public MainPage scrollIntoQuestions(){
