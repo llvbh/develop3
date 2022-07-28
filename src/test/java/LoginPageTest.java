@@ -14,8 +14,22 @@ public class LoginPageTest {
     public void checkLoginTest() throws InterruptedException {
         LoginPage loginPage = open(LoginPage.URL_PRIVATE_OFFICE_PAGE, LoginPage.class)
         .setPass("123456")
-        .setEmail("Beckham")
-        .login();
+        .setEmail("spring@gmail.com")
+        .clickSave();
+        Thread.sleep(1000);
+    }
+
+    @Test
+    public void checkClickLogoTest() throws InterruptedException {
+         open(LoginPage.URL_PRIVATE_OFFICE_PAGE, LoginPage.class)
+                .clickLogo();
+        Thread.sleep(5000);
+    }
+    @Test
+    public void checkClickConstructorTest() throws InterruptedException {
+        open(LoginPage.URL_PRIVATE_OFFICE_PAGE, LoginPage.class)
+                .clickConstructor();
         Thread.sleep(5000);
     }
 }
+
