@@ -3,6 +3,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.page;
 
 public class MainPage {
@@ -17,29 +19,53 @@ public class MainPage {
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
     public SelenideElement btnLoginAccount;
 
-//    //ингредиенты
-//    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
-//    public SelenideElement bun;
-//
-//    @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
-//    public SelenideElement sauce;
-//
-//    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
-//    public SelenideElement filling;
-//
-//    //ингредиенты  внутри
-//    @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
-//    public SelenideElement ingredientBun;
-//
-//    @FindBy(how = How.XPATH, using = ".//h2[text()='Соусы']")
-//    public SelenideElement ingredientSauce;
-//
-//    @FindBy(how = How.XPATH, using = "//*[@id='root']/div/main/section[1]/div[2]/h2[2]")
-//    public SelenideElement ingredient;
+    // текущий элемент, который только у выбранного таба
+    @FindBy(how = How.CSS,using = ".tab_tab_type_current__2BEPc")
+    public SelenideElement currentActiveSection;
 
     //btn Оформить заказ
     @FindBy(how = How.XPATH, using = ".//button[text()='Оформить заказ']")
     private SelenideElement createOrder;
+
+    // таб Булки
+    @FindBy(how = How.CSS,using = ".tab_tab__1SPyG:nth-child(1)")
+    private SelenideElement bunsTab;
+
+    // текст Булки
+//    @FindBy(how = How.CSS,using = ".text_type_main-medium:nth-child(1)")
+//    private SelenideElement bunsTitle;
+
+    // вкладка Соусы
+    @FindBy(how = How.CSS,using = ".tab_tab__1SPyG:nth-child(2)")
+    private SelenideElement saucesTab;
+
+    // вкладка Начинки
+    @FindBy(how = How.CSS,using = ".tab_tab__1SPyG:nth-child(3)")
+    private SelenideElement toppingsTab;
+
+    public void clickBunsTab() {
+        bunsTab.shouldBe(enabled).doubleClick();
+    }
+
+    public void clickSauceTab() {
+        saucesTab.shouldBe(enabled).click();
+    }
+
+    public void clickToppingsTab() {
+        toppingsTab.click();
+    }
+
+    public boolean isFillingsTabActive() {
+        return currentActiveSection.getText().contentEquals("Начинки");
+    }
+
+    public boolean isSaucesTabActive() {
+        return currentActiveSection.getText().contentEquals("Соусы");
+    }
+
+    public boolean isBunsTabActive() {
+        return currentActiveSection.getText().contentEquals("Булки");
+    }
 
     //нажать на кнопку Личный Кабинет
     public LoginPage clickBtnPersonalCabinet() {

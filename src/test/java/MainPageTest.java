@@ -2,6 +2,8 @@ import org.junit.Before;
 import com.yandex.praktikum.MainPage;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.Assert.assertTrue;
+
 import io.qameta.allure.junit4.DisplayName;
 
 
@@ -42,5 +44,29 @@ public class MainPageTest {
     public void checkBtnPersonalCabinet(){
         mainpage.clickBtnPersonalCabinet()
                 .checkText();
+    }
+
+    @Test
+    @DisplayName("Успешный переход к блоку начинки")
+    public void checkSwitchToToppingsSectionTest() {
+        mainpage.clickToppingsTab();
+        boolean isFillingsTabActive = mainpage.isFillingsTabActive();
+        assertTrue("Нет переключения на раздел Начинки при клике на таб Начинки", isFillingsTabActive);
+    }
+
+    @Test
+    @DisplayName("Успешный переход к блоку начинки")
+    public void checkSwitchToBunsSectionTest() {
+        mainpage.clickBunsTab();
+        boolean isBunsTabActive = mainpage.isBunsTabActive();
+        assertTrue("Нет переключения на раздел Булки при клике на таб Булки", isBunsTabActive);
+    }
+
+    @Test
+    @DisplayName("Успешный переход к блоку начинки")
+    public void checkSwitchToSaucesSectionTest() {
+        mainpage.clickSauceTab();
+        boolean isSaucesTabActive = mainpage.isSaucesTabActive();
+        assertTrue("Нет переключения на раздел Булки при клике на таб Булки", isSaucesTabActive);
     }
 }
