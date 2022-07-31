@@ -11,6 +11,7 @@ public class RegistrationPageTest {
     public void startUp() {
         System.setProperty("selenide.browser", "chrome");
     }
+
     @Test
     public void checkRegistrationTrueTest() {
         loginPage

@@ -23,11 +23,9 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "//p[@class='AppHeader_header__linkText__3q_va ml-2']")
     private SelenideElement constructor;
 
-
     //Ссылка на регистрацию
     @FindBy(how = How.XPATH, using = ".//a[text()='Зарегистрироваться']")
     private SelenideElement registrationLink;
-
 
     //Ссылка на Восстановить пароль
     @FindBy(how = How.XPATH, using = ".//a[text()='Восстановить пароль']")
@@ -48,10 +46,12 @@ public class LoginPage {
         inputEmail.sendKeys(email);
         return this;
     }
+
     public LoginPage setPass(String pass) {
         inputPass.sendKeys(pass);
         return this;
     }
+
     public MainPage clickLogInSave(){
         btnLogin.click();
         return page(MainPage.class);
@@ -66,7 +66,6 @@ public class LoginPage {
         logo.click();
         return page(MainPage.class);
     }
-
 
     public RegistrationPage clickRegistration(){
         registrationLink.scrollIntoView(true).click();

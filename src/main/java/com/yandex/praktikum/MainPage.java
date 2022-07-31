@@ -54,6 +54,7 @@ public class MainPage {
         System.out.println("personal");
         return page(LoginAuthPage.class);
     }
+
     //нажать на кнопку Войти в аккаунт
     public LoginPage clickBtnLoginAccount() {
         btnLoginAccount.click();

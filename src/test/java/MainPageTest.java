@@ -5,11 +5,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
     MainPage mainpage = open(MainPage.URL_MAIN_PAGE, MainPage.class);
+
     @Before
     public void startUp() {
         System.setProperty("selenide.browser", "chrome");
-
     }
+
     //Войти в Личный кабинет
     @Test
     public void checkLoginFromBtnPersonalCabinet() {
@@ -33,6 +34,7 @@ public class MainPageTest {
                 .clickBtnAuthPersonalCabinet()
                 .clickExitBtn();
     }
+
     //Переход в личный кабинет
     @Test
     public void checkBtnPersonalCabinet(){
@@ -40,7 +42,3 @@ public class MainPageTest {
                 .checkText();
     }
 }
-
-
-
-
