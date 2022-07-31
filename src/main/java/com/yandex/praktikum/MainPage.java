@@ -1,5 +1,4 @@
 package com.yandex.praktikum;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -30,10 +29,6 @@ public class MainPage {
     // таб Булки
     @FindBy(how = How.CSS,using = ".tab_tab__1SPyG:nth-child(1)")
     private SelenideElement bunsTab;
-
-    // текст Булки
-//    @FindBy(how = How.CSS,using = ".text_type_main-medium:nth-child(1)")
-//    private SelenideElement bunsTitle;
 
     // вкладка Соусы
     @FindBy(how = How.CSS,using = ".tab_tab__1SPyG:nth-child(2)")
@@ -88,10 +83,7 @@ public class MainPage {
     }
 
     //Проверка
-    public MainPage checkUserLogIn() {
-        createOrder.shouldHave(Condition.exactText("Оформить заказ"));
-        System.out.println("Оформить");
-        return page(MainPage.class);
+    public boolean checkUserLogIn() {
+        return createOrder.getText().contentEquals("Оформить заказ");
     }
-
 }

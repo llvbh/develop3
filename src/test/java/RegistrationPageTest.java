@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.Assert.assertTrue;
 
 public class RegistrationPageTest {
     LoginPage loginPage = open(LoginPage.URL_ACCOUNT_PAGE, LoginPage.class);
@@ -16,23 +17,25 @@ public class RegistrationPageTest {
     @DisplayName("Успешная регистрация")
     @Test
     public void checkRegistrationTrueTest() {
-        loginPage
+        boolean hasLoginText = loginPage
                 .clickRegistration()
                 .setName("Name123")
                 .setEmail("spring45@gmail.com")
                 .setPass("123g4567")
                 .clickSave()
                 .checkText();
+        assertTrue("Нет переключения на стр авторизации", hasLoginText);
     }
 
     @DisplayName("Войти через ссылку Регистрация с маленьким размером пароля")
     @Test
     public void checkRegistrationFailTest(){
-        loginPage
+        boolean hasIncorrectPasswordText = loginPage
                 .clickRegistration()
                 .setName("Nameff")
                 .setEmail("spring442@gmail.com")
                 .setPass("123")
                 .checkRegistrationFail();
+        assertTrue("Длина размера пароля меньше 6", hasIncorrectPasswordText);
     }
 }

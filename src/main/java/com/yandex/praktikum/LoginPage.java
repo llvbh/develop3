@@ -1,5 +1,4 @@
 package com.yandex.praktikum;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -42,6 +41,9 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = ".//h2[contains(text(),'Вход')]")
     private SelenideElement btnH2logIn;
 
+    @FindBy(how = How.XPATH, using = ".//h1[contains(text(),'Соберите бургер')]")
+    private SelenideElement textMakeBurger;
+
     public LoginPage setEmail(String email) {
         inputEmail.sendKeys(email);
         return this;
@@ -57,20 +59,21 @@ public class LoginPage {
         return page(MainPage.class);
     }
 
-    public MainPage clickConstructor(){
+    public boolean clickConstructor(){
         constructor.click();
-        return page(MainPage.class);
+        return textMakeBurger.getText().contentEquals("Соберите бургер");
     }
 
-    public MainPage clickLogo(){
+    public boolean clickLogo(){
         logo.click();
-        return page(MainPage.class);
+        return textMakeBurger.getText().contentEquals("Соберите бургер");
     }
 
     public RegistrationPage clickRegistration(){
         registrationLink.scrollIntoView(true).click();
         return page(RegistrationPage.class);
     }
+
     public LoginPage clickLogInRegistration(){
         logIn.scrollIntoView(true).click();
         return this;
@@ -81,9 +84,7 @@ public class LoginPage {
         return page(LoginPage.class);
     }
 
-    public LoginPage checkText(){
-        btnH2logIn.shouldHave(Condition.exactText("Вход"));
-        return page(LoginPage.class);
-
+    public boolean checkText(){
+        return btnH2logIn.getText().contentEquals("Вход");
     }
 }

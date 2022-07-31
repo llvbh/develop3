@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import io.qameta.allure.junit4.DisplayName;
 
-
 public class MainPageTest {
     MainPage mainpage = open(MainPage.URL_MAIN_PAGE, MainPage.class);
 
@@ -18,32 +17,37 @@ public class MainPageTest {
     @Test
     @DisplayName("Войти в Личный кабинет")
     public void checkLoginFromBtnPersonalCabinet() {
-        mainpage.clickBtnPersonalCabinet()
+        boolean hasCreateOrderText = mainpage.clickBtnPersonalCabinet()
                 .setEmail("spring42@gmail.com")
                 .setPass("123g4567")
                 .clickLogInSave()
-                .checkUserLogIn()
-                .clickBtnAuthPersonalCabinet()
+                .checkUserLogIn();
+        assertTrue("Юзер не залогинен", hasCreateOrderText);
+
+        mainpage.clickBtnAuthPersonalCabinet()
                 .clickExitBtn();
     }
 
     @DisplayName("Войти в аккаунт")
     @Test
     public void checkLoginFromBtnFromLoginAccount(){
-        mainpage.clickBtnLoginAccount()
+        boolean hasCreateOrderText = mainpage.clickBtnLoginAccount()
                 .setEmail("spring42@gmail.com")
                 .setPass("123g4567")
                 .clickLogInSave()
-                .checkUserLogIn()
-                .clickBtnAuthPersonalCabinet()
+                .checkUserLogIn();
+        assertTrue("Юзер не залогинен", hasCreateOrderText);
+
+        mainpage.clickBtnAuthPersonalCabinet()
                 .clickExitBtn();
     }
 
     @DisplayName("Переход в личный кабинет")
     @Test
     public void checkBtnPersonalCabinet(){
-        mainpage.clickBtnPersonalCabinet()
+        boolean hasLoginText = mainpage.clickBtnPersonalCabinet()
                 .checkText();
+        assertTrue("Нет переключения на стр авторизации", hasLoginText);
     }
 
     @Test
@@ -67,6 +71,6 @@ public class MainPageTest {
     public void checkSwitchToSaucesSectionTest() {
         mainpage.clickSauceTab();
         boolean isSaucesTabActive = mainpage.isSaucesTabActive();
-        assertTrue("Нет переключения на раздел Булки при клике на таб Булки", isSaucesTabActive);
+        assertTrue("Нет переключения на раздел Соусы при клике на таб Соусы", isSaucesTabActive);
     }
 }

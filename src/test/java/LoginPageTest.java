@@ -1,8 +1,10 @@
 import com.yandex.praktikum.LoginPage;
+import com.yandex.praktikum.MainPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.Assert.assertTrue;
 
 public class LoginPageTest {
 
@@ -16,52 +18,63 @@ public class LoginPageTest {
     @DisplayName("Клик по лого")
     @Test
     public void checkClickLogoTest(){
-        loginPage.clickLogo();
+        boolean hasMakeBurgerText = loginPage.clickLogo();
+        assertTrue("Нет переключения на стр конструктора", hasMakeBurgerText);
     }
 
     @DisplayName("Клик по лого конструктора")
     @Test
     public void checkClickConstructorTest(){
-        loginPage.clickConstructor();
+        boolean hasMakeBurgerText = loginPage.clickConstructor();
+        assertTrue("Нет переключения на стр конструктора", hasMakeBurgerText);
     }
 
     @DisplayName("Логин")
     @Test
     public void checkLoginTest() {
-        loginPage
+        MainPage mainPage = loginPage
                 .setPass("123456")
                 .setEmail("spring@gmail.com")
-                .clickLogInSave()
-                .checkUserLogIn()
-                .clickBtnAuthPersonalCabinet()
+                .clickLogInSave();
+
+        boolean hasCreateOrderText = mainPage.checkUserLogIn();
+        assertTrue("Юзер не залогинен", hasCreateOrderText);
+
+        mainPage.clickBtnAuthPersonalCabinet()
                 .clickExitBtn();
     }
 
     @DisplayName("Логин через форму регистрации")
     @Test
     public void checkLoginResgistrationTest() {
-        loginPage
+        MainPage mainPage = loginPage
             .clickRegistration()
             .clickLogInRegistration()
             .setPass("123456")
             .setEmail("spring@gmail.com")
-            .clickLogInSave()
-            .checkUserLogIn()
-            .clickBtnAuthPersonalCabinet()
-            .clickExitBtn();
+            .clickLogInSave();
+
+        boolean hasCreateOrderText = mainPage.checkUserLogIn();
+        assertTrue("Юзер не залогинен", hasCreateOrderText);
+
+        mainPage.clickBtnAuthPersonalCabinet()
+                .clickExitBtn();
     }
 
     @DisplayName("Логин через форму забыли пароль")
     @Test
     public void checkClickForgetPassTest() {
-        loginPage
+        MainPage mainPage = loginPage
             .clickRestorePasswordRegistration()
             .clickLogInRegistration()
             .setPass("123456")
             .setEmail("spring@gmail.com")
-            .clickLogInSave()
-            .checkUserLogIn()
-            .clickBtnAuthPersonalCabinet()
+            .clickLogInSave();
+
+        boolean hasCreateOrderText = mainPage.checkUserLogIn();
+        assertTrue("Юзер не залогинен", hasCreateOrderText);
+
+        mainPage.clickBtnAuthPersonalCabinet()
             .clickExitBtn();
     }
 }

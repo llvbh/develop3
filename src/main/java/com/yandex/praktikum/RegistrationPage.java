@@ -1,6 +1,5 @@
 package com.yandex.praktikum;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -52,10 +51,8 @@ public class RegistrationPage {
         return page(LoginPage.class);
     }
 
-    public LoginPage checkRegistrationFail(){
+    public boolean checkRegistrationFail(){
         btnRegistration.click();
-        errorMsg.shouldHave(Condition.exactText("Некорректный пароль"));
-        return page(LoginPage.class);
-
+        return errorMsg.getText().contentEquals("Некорректный пароль");
     }
 }
