@@ -20,7 +20,7 @@ public class RegistrationPageTest {
         boolean hasLoginText = loginPage
                 .clickRegistration()
                 .setName("Name123")
-                .setEmail("spring45@gmail.com")
+                .setEmail("spring77@gmail.com")
                 .setPass("123g4567")
                 .clickSave()
                 .checkText();
@@ -33,7 +33,7 @@ public class RegistrationPageTest {
         boolean hasIncorrectPasswordText = loginPage
                 .clickRegistration()
                 .setName("Nameff")
-                .setEmail("spring442@gmail.com")
+                .setEmail("spring988@gmail.com")
                 .setPass("123")
                 .checkRegistrationFail();
         assertTrue("Длина размера пароля меньше 6", hasIncorrectPasswordText);
