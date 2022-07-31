@@ -1,6 +1,3 @@
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import com.yandex.praktikum.LoginPage;
 import org.junit.Before;
 import com.yandex.praktikum.MainPage;
 import org.junit.Test;
@@ -15,33 +12,34 @@ public class MainPageTest {
     }
     //Войти в Личный кабинет
     @Test
-    public void checkLoginFromBtnPersonalCabinet() throws InterruptedException {
+    public void checkLoginFromBtnPersonalCabinet() {
         mainpage.clickBtnPersonalCabinet()
-         .setEmail("spring42@gmail.com")
-         .setPass("123g4567")
-         .clickSave()
-         .checkLoginText();
-       Thread.sleep(5000);
+                .setEmail("spring42@gmail.com")
+                .setPass("123g4567")
+                .clickLogInSave()
+                .checkUserLogIn()
+                .clickBtnAuthPersonalCabinet()
+                .clickExitBtn();
     }
 
     //Войти в аккаунт
     @Test
-    public void checkLoginFromBtnFromLoginAccount() throws InterruptedException {
+    public void checkLoginFromBtnFromLoginAccount(){
         mainpage.clickBtnLoginAccount()
-        .setEmail("spring42@gmail.com")
-        .setPass("123g4567")
-        .clickSave()
-        .checkLoginText();
+                .setEmail("spring42@gmail.com")
+                .setPass("123g4567")
+                .clickLogInSave()
+                .checkUserLogIn()
+                .clickBtnAuthPersonalCabinet()
+                .clickExitBtn();
     }
     //Переход в личный кабинет
     @Test
-    public void checkBtnPersonalCabinet() throws InterruptedException {
-        mainpage.clickPersonalCabinet()
+    public void checkBtnPersonalCabinet(){
+        mainpage.clickBtnPersonalCabinet()
                 .checkText();
     }
-
 }
-
 
 
 

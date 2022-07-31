@@ -1,13 +1,8 @@
 package com.yandex.praktikum;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
 public class LoginPage {
@@ -19,7 +14,6 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "(.//input[@name='name'])")
     private SelenideElement inputEmail;
 
-
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти']")
     private SelenideElement btnLogin;
 
@@ -29,18 +23,17 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "//p[@class='AppHeader_header__linkText__3q_va ml-2']")
     private SelenideElement constructor;
 
-    @FindBy(how = How.XPATH, using = ".//button[text()='Выход']")
-    private SelenideElement exit;
 
     //Ссылка на регистрацию
     @FindBy(how = How.XPATH, using = ".//a[text()='Зарегистрироваться']")
     private SelenideElement registrationLink;
 
+
     //Ссылка на Восстановить пароль
     @FindBy(how = How.XPATH, using = ".//a[text()='Восстановить пароль']")
     private SelenideElement restorePassword;
 
-      //Ссылка на Войти
+    //Ссылка на Войти
     @FindBy(how = How.XPATH, using = ".//a[text()='Войти']")
     private SelenideElement logIn;
 
@@ -59,10 +52,9 @@ public class LoginPage {
         inputPass.sendKeys(pass);
         return this;
     }
-    public LoginPage clickSave(){
+    public MainPage clickLogInSave(){
         btnLogin.click();
-        System.out.println("vdvdxvc");
-        return this;
+        return page(MainPage.class);
     }
 
     public MainPage clickConstructor(){
@@ -75,15 +67,9 @@ public class LoginPage {
         return page(MainPage.class);
     }
 
-    public MainPage clickExitBtn(){
-        if (exit.exists()){
-            exit.click();
-        }
-        return page(MainPage.class);
-    }
 
     public RegistrationPage clickRegistration(){
-        registrationLink.click();
+        registrationLink.scrollIntoView(true).click();
         return page(RegistrationPage.class);
     }
     public LoginPage clickLogInRegistration(){
@@ -92,15 +78,8 @@ public class LoginPage {
     }
 
     public LoginPage clickRestorePasswordRegistration(){
-
         restorePassword.scrollIntoView(true).click();
         return page(LoginPage.class);
-    }
-
-    public LoginPage checkLoginText(){
-        createOrder.shouldHave(Condition.exactText("Оформить заказ"));
-        return  this;
-
     }
 
     public LoginPage checkText(){
@@ -108,7 +87,4 @@ public class LoginPage {
         return page(LoginPage.class);
 
     }
-
-
-
 }

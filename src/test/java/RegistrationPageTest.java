@@ -12,25 +12,23 @@ public class RegistrationPageTest {
         System.setProperty("selenide.browser", "chrome");
     }
     @Test
-    public void checkRegistrationTest() throws InterruptedException {
+    public void checkRegistrationTrueTest() {
         loginPage
                 .clickRegistration()
                 .setName("Nameff")
-                .setEmail("spring42@gmail.com")
+                .setEmail("spring38@gmail.com")
                 .setPass("123g4567")
                 .clickSave()
                 .checkText();
-        Thread.sleep(8000);
     }
 
     @Test
-    public void checkRegistrationFailTest() throws InterruptedException {
+    public void checkRegistrationFailTest(){
         loginPage
                 .clickRegistration()
                 .setName("Nameff")
                 .setEmail("spring442@gmail.com")
                 .setPass("123")
                 .checkRegistrationFail();
-        Thread.sleep(8000);
     }
 }

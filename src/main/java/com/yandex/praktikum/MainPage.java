@@ -1,4 +1,5 @@
 package com.yandex.praktikum;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -42,23 +43,28 @@ public class MainPage {
 
     //нажать на кнопку Личный Кабинет
     public LoginPage clickBtnPersonalCabinet() {
-        btnOpenLoginPage.click();
+        btnOpenLoginPage.scrollIntoView(true).click();
+        System.out.println("personal");
         return page(LoginPage.class);
     }
 
+    //нажать на кнопку Авторизованному юзеру Личный Кабинет
+    public LoginAuthPage clickBtnAuthPersonalCabinet() {
+        btnOpenLoginPage.scrollIntoView(true).click();
+        System.out.println("personal");
+        return page(LoginAuthPage.class);
+    }
     //нажать на кнопку Войти в аккаунт
     public LoginPage clickBtnLoginAccount() {
         btnLoginAccount.click();
         return page(LoginPage.class);
     }
 
-    //Нажать  в личный кабинет
-    public LoginPage clickPersonalCabinet() {
-        btnOpenLoginPage.click();
-        return page(LoginPage.class);
+    //Проверка
+    public MainPage checkUserLogIn() {
+        createOrder.shouldHave(Condition.exactText("Оформить заказ"));
+        System.out.println("Оформить");
+        return page(MainPage.class);
     }
-
-
-
 
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.How;
 import static com.codeborne.selenide.Selenide.page;
 
 public class RegistrationPage {
-   // public static final String URL_REGISTRATION_PAGE = "URL_REGISTRATION_PAGE";
+    // public static final String URL_REGISTRATION_PAGE = "";
 
     //Ссылка на Войти
     @FindBy(how = How.XPATH, using = ".//a[text()='Войти']")
@@ -30,7 +30,7 @@ public class RegistrationPage {
     private SelenideElement errorMsg;
 
 
-     public LoginPage clickLogInRegistration(){
+    public LoginPage clickLogInRegistration(){
         logIn.scrollIntoView(true).click();
         return page(LoginPage.class);
     }
