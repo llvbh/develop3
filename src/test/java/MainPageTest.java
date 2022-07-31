@@ -2,6 +2,8 @@ import org.junit.Before;
 import com.yandex.praktikum.MainPage;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.open;
+import io.qameta.allure.junit4.DisplayName;
+
 
 public class MainPageTest {
     MainPage mainpage = open(MainPage.URL_MAIN_PAGE, MainPage.class);
@@ -11,8 +13,8 @@ public class MainPageTest {
         System.setProperty("selenide.browser", "chrome");
     }
 
-    //Войти в Личный кабинет
     @Test
+    @DisplayName("Войти в Личный кабинет")
     public void checkLoginFromBtnPersonalCabinet() {
         mainpage.clickBtnPersonalCabinet()
                 .setEmail("spring42@gmail.com")
@@ -23,7 +25,7 @@ public class MainPageTest {
                 .clickExitBtn();
     }
 
-    //Войти в аккаунт
+    @DisplayName("Войти в аккаунт")
     @Test
     public void checkLoginFromBtnFromLoginAccount(){
         mainpage.clickBtnLoginAccount()
@@ -35,7 +37,7 @@ public class MainPageTest {
                 .clickExitBtn();
     }
 
-    //Переход в личный кабинет
+    @DisplayName("Переход в личный кабинет")
     @Test
     public void checkBtnPersonalCabinet(){
         mainpage.clickBtnPersonalCabinet()
