@@ -1,8 +1,6 @@
 package api;
 
-import io.restassured.response.Response;
 import pojo.*;
-import static io.restassured.RestAssured.given;
 
 public class UserClient extends RestAssuredClient {
 
@@ -16,7 +14,6 @@ public class UserClient extends RestAssuredClient {
             .as(ResponseUser.class);
     }
 
-
     public static void deleteUser(String authorization) {
         reqSpec
             .auth()
@@ -25,7 +22,5 @@ public class UserClient extends RestAssuredClient {
             .then()
             .statusCode(202);
     }
-
-
 }
 

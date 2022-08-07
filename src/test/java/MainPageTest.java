@@ -42,14 +42,6 @@ public class MainPageTest {
                 .clickExitBtn();
     }
 
-    @DisplayName("Переход в личный кабинет")
-    @Test
-    public void checkBtnPersonalCabinet(){
-        boolean hasLoginText = mainpage.clickBtnPersonalCabinet()
-                .checkText();
-        assertTrue("Нет переключения на стр авторизации", hasLoginText);
-    }
-
     @Test
     @DisplayName("Успешный переход к блоку начинки")
     public void checkSwitchToToppingsSectionTest() {

@@ -1,6 +1,7 @@
 package pojo;
 
 public class ResponseUser {
+
     private String accessToken;
     private String refreshToken;
     private boolean success;
@@ -20,7 +21,6 @@ public class ResponseUser {
     public boolean isSuccess() {
         return success;
     }
-
 
     public ResponseUserInfo getUser() {
         return user;

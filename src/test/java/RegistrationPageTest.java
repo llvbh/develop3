@@ -12,7 +12,8 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.Assert.assertTrue;
 
 public class RegistrationPageTest {
-   LoginPage loginPage = open(LoginPage.URL_ACCOUNT_PAGE, LoginPage.class);
+    LoginPage loginPage = open(LoginPage.URL_ACCOUNT_PAGE, LoginPage.class);
+
     private User user;
     private static String accessToken;
 
@@ -24,11 +25,11 @@ public class RegistrationPageTest {
 
     @AfterClass
     public static void deleteUser() {
-        System.out.println(accessToken);
         if (accessToken != null ) {
             UserClient.deleteUser(accessToken);
         }
     }
+
     @Test
     @DisplayName("Успешная регистрация через АПИ")
     public void checkCreateNewUser() {
@@ -48,17 +49,4 @@ public class RegistrationPageTest {
                 .checkRegistrationFail();
         assertTrue("Длина размера пароля меньше 6", hasIncorrectPasswordText);
     }
-//
-//    @DisplayName("Успешная регистрация")
-//    @Test
-//    public void checkRegistrationTrueTest() {
-//        boolean hasLoginText = loginPage
-//                .clickRegistration()
-//                .setName("Name123678")
-//                .setEmail("spring77@gmail.com")
-//                .setPass("123g4567")
-//                .clickSave()
-//                .checkText();
-//        assertTrue("Нет переключения на стр авторизации", hasLoginText);
-//    }
 }

@@ -15,20 +15,6 @@ public class LoginPageTest {
         System.setProperty("selenide.browser", "chrome");
     }
 
-    @DisplayName("Клик по лого")
-    @Test
-    public void checkClickLogoTest(){
-        boolean hasMakeBurgerText = loginPage.clickLogo();
-        assertTrue("Нет переключения на стр конструктора", hasMakeBurgerText);
-    }
-
-    @DisplayName("Клик по лого конструктора")
-    @Test
-    public void checkClickConstructorTest(){
-        boolean hasMakeBurgerText = loginPage.clickConstructor();
-        assertTrue("Нет переключения на стр конструктора", hasMakeBurgerText);
-    }
-
     @DisplayName("Логин")
     @Test
     public void checkLoginTest() {
