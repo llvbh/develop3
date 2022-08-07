@@ -55,4 +55,5 @@ public class RegistrationPage {
         btnRegistration.click();
         return errorMsg.getText().contentEquals("Некорректный пароль");
     }
+
 }

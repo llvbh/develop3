@@ -46,7 +46,7 @@ public class LoginPageTest {
 
     @DisplayName("Логин через форму регистрации")
     @Test
-    public void checkLoginResgistrationTest() {
+    public void checkLoginRegistrationTest() {
         MainPage mainPage = loginPage
             .clickRegistration()
             .clickLogInRegistration()

@@ -59,7 +59,7 @@ public class MainPageTest {
     }
 
     @Test
-    @DisplayName("Успешный переход к блоку начинки")
+    @DisplayName("Успешный переход к блоку булки")
     public void checkSwitchToBunsSectionTest() {
         mainpage.clickBunsTab();
         boolean isBunsTabActive = mainpage.isBunsTabActive();
@@ -67,7 +67,7 @@ public class MainPageTest {
     }
 
     @Test
-    @DisplayName("Успешный переход к блоку начинки")
+    @DisplayName("Успешный переход к блоку соусы")
     public void checkSwitchToSaucesSectionTest() {
         mainpage.clickSauceTab();
         boolean isSaucesTabActive = mainpage.isSaucesTabActive();
